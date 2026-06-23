@@ -85,12 +85,10 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <DropShadowEffect x:Key="Shadow" BlurRadius="16" Opacity="0.1" ShadowDepth="4" Color="#000000"/>
     </Window.Resources>
 
     <Border Background="#FFFFFF" CornerRadius="8" Margin="12" Effect="{StaticResource Shadow}">
-        <Border.Resources>
-            <DropShadowEffect x:Key="Shadow" BlurRadius="16" Opacity="0.1" ShadowDepth="4" Color="#000000"/>
-        </Border.Resources>
         <Grid Margin="24,20">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
