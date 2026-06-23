@@ -1,0 +1,8 @@
+* text=auto
+*.cs text=lf
+*.xaml text=lf
+*.csproj text=lf
+*.json text=lf
+*.md text=lf
+*.ico binary
+*.png binary
