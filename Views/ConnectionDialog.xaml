@@ -97,25 +97,28 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <!-- Title -->
-            <TextBlock Grid.Row="0" Text="RDP 连接信息" FontSize="16" FontWeight="SemiBold" Foreground="#1A1A1A" Margin="0,0,0,4"/>
+            <TextBlock Grid.Row="0" Text="RDP 连接信息" FontSize="16" FontWeight="SemiBold" Foreground="#1A1A1A"/>
             <TextBlock Grid.Row="0" Text="填写远程桌面连接参数" FontSize="11" Foreground="#888888" Margin="0,22,0,0"/>
 
             <TextBlock Grid.Row="1" Text="服务器地址" Style="{StaticResource FieldLabel}"/>
-            <TextBox Grid.Row="1" x:Name="TbServer" Style="{StaticResource FieldInput}" Margin="0,24,0,0"/>
+            <TextBox Grid.Row="2" x:Name="TbServer" Style="{StaticResource FieldInput}"/>
 
-            <TextBlock Grid.Row="2" Text="用户名" Style="{StaticResource FieldLabel}"/>
-            <TextBox Grid.Row="2" x:Name="TbUsername" Style="{StaticResource FieldInput}"/>
+            <TextBlock Grid.Row="3" Text="用户名" Style="{StaticResource FieldLabel}"/>
+            <TextBox Grid.Row="4" x:Name="TbUsername" Style="{StaticResource FieldInput}"/>
 
-            <TextBlock Grid.Row="3" Text="密码" Style="{StaticResource FieldLabel}"/>
-            <PasswordBox Grid.Row="3" x:Name="PbPassword" Style="{StaticResource FieldPassword}"/>
+            <TextBlock Grid.Row="5" Text="密码" Style="{StaticResource FieldLabel}"/>
+            <PasswordBox Grid.Row="6" x:Name="PbPassword" Style="{StaticResource FieldPassword}"/>
 
-            <TextBlock Grid.Row="4" Text="备注" Style="{StaticResource FieldLabel}"/>
-            <TextBox Grid.Row="4" x:Name="TbNotes" Style="{StaticResource FieldInput}" Height="60" AcceptsReturn="True" TextWrapping="Wrap" Padding="10,6"/>
+            <TextBlock Grid.Row="7" Text="备注" Style="{StaticResource FieldLabel}"/>
+            <TextBox Grid.Row="8" x:Name="TbNotes" Style="{StaticResource FieldInput}" Height="60" AcceptsReturn="True" TextWrapping="Wrap" Padding="10,6"/>
 
-            <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,16,0,0">
+            <StackPanel Grid.Row="9" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,16,0,0">
                 <Button x:Name="BtnOk" Content="保存" Style="{StaticResource DialogButton}" Background="#0078D4" Foreground="#FFFFFF" Click="BtnOk_Click" IsDefault="True"/>
                 <Button Content="取消" Style="{StaticResource DialogButton}" Background="#E0E0E0" Foreground="#333333" Margin="10,0,0,0" IsCancel="True"/>
             </StackPanel>

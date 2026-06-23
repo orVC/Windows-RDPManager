@@ -48,7 +48,8 @@ public partial class MainWindow : Window
 
     private void LvConnections_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
     {
-        EditSelected();
+        if (LvConnections.SelectedItem is not RdpConnection selected) return;
+        RdpLauncher.Launch(selected);
     }
 
     private void EditSelected()
