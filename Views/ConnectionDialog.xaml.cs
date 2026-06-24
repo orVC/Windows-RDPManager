@@ -1,5 +1,6 @@
 using System.Windows;
 using RDPManager.Models;
+using RDPManager.Services;
 
 namespace RDPManager.Views;
 
@@ -10,12 +11,13 @@ public partial class ConnectionDialog : Window
     public ConnectionDialog()
     {
         InitializeComponent();
+        DataContext = TranslationService.Instance;
         Owner = Application.Current.MainWindow;
     }
 
     public ConnectionDialog(RdpConnection existing) : this()
     {
-        Title = "编辑 RDP 连接";
+        Title = TranslationService.Instance.EditTitle;
         TbServer.Text = existing.ServerAddress;
         TbUsername.Text = existing.Username;
         PbPassword.Password = existing.Password;
@@ -27,7 +29,10 @@ public partial class ConnectionDialog : Window
     {
         if (string.IsNullOrWhiteSpace(TbServer.Text))
         {
-            MessageBox.Show("请输入服务器地址", "提示", MessageBoxButton.OK, MessageBoxImage.Warning);
+            MessageBox.Show(
+                TranslationService.Instance.ValidationServerRequired,
+                TranslationService.Instance.ValidationTitle,
+                MessageBoxButton.OK, MessageBoxImage.Warning);
             TbServer.Focus();
             return;
         }

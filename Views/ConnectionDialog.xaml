@@ -1,7 +1,8 @@
 <Window x:Class="RDPManager.Views.ConnectionDialog"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="添加 RDP 连接" SizeToContent="Height" Width="480"
+        xmlns:s="clr-namespace:RDPManager.Services"
+        Title="{Binding AddTitle}" SizeToContent="Height" Width="480"
         WindowStartupLocation="CenterOwner" ShowInTaskbar="False"
         ResizeMode="NoResize"
         FontFamily="Segoe UI" FontSize="13"
@@ -103,24 +104,24 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Grid.Row="0" Text="RDP 连接信息" FontSize="16" FontWeight="SemiBold" Foreground="#1A1A1A"/>
-            <TextBlock Grid.Row="0" Text="填写远程桌面连接参数" FontSize="11" Foreground="#888888" Margin="0,22,0,0"/>
+            <TextBlock Grid.Row="0" Text="{Binding AddTitle}" FontSize="16" FontWeight="SemiBold" Foreground="#1A1A1A"/>
+            <TextBlock Grid.Row="0" Text="{Binding DialogSubtitle}" FontSize="11" Foreground="#888888" Margin="0,22,0,0"/>
 
-            <TextBlock Grid.Row="1" Text="服务器地址" Style="{StaticResource FieldLabel}"/>
+            <TextBlock Grid.Row="1" Text="{Binding LabelServerAddress}" Style="{StaticResource FieldLabel}"/>
             <TextBox Grid.Row="2" x:Name="TbServer" Style="{StaticResource FieldInput}"/>
 
-            <TextBlock Grid.Row="3" Text="用户名" Style="{StaticResource FieldLabel}"/>
+            <TextBlock Grid.Row="3" Text="{Binding LabelUsername}" Style="{StaticResource FieldLabel}"/>
             <TextBox Grid.Row="4" x:Name="TbUsername" Style="{StaticResource FieldInput}"/>
 
-            <TextBlock Grid.Row="5" Text="密码" Style="{StaticResource FieldLabel}"/>
+            <TextBlock Grid.Row="5" Text="{Binding LabelPassword}" Style="{StaticResource FieldLabel}"/>
             <PasswordBox Grid.Row="6" x:Name="PbPassword" Style="{StaticResource FieldPassword}"/>
 
-            <TextBlock Grid.Row="7" Text="备注" Style="{StaticResource FieldLabel}"/>
+            <TextBlock Grid.Row="7" Text="{Binding LabelNotes}" Style="{StaticResource FieldLabel}"/>
             <TextBox Grid.Row="8" x:Name="TbNotes" Style="{StaticResource FieldInput}" Height="60" AcceptsReturn="True" TextWrapping="Wrap" Padding="10,6"/>
 
             <StackPanel Grid.Row="9" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,16,0,0">
-                <Button x:Name="BtnOk" Content="保存" Style="{StaticResource DialogButton}" Background="#0078D4" Foreground="#FFFFFF" Click="BtnOk_Click" IsDefault="True"/>
-                <Button Content="取消" Style="{StaticResource DialogButton}" Background="#E0E0E0" Foreground="#333333" Margin="10,0,0,0" IsCancel="True"/>
+                <Button x:Name="BtnOk" Content="{Binding BtnSave}" Style="{StaticResource DialogButton}" Background="#0078D4" Foreground="#FFFFFF" Click="BtnOk_Click" IsDefault="True"/>
+                <Button Content="{Binding BtnCancel}" Style="{StaticResource DialogButton}" Background="#E0E0E0" Foreground="#333333" Margin="10,0,0,0" IsCancel="True"/>
             </StackPanel>
         </Grid>
     </Border>

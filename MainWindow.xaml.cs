@@ -2,6 +2,7 @@
 using RDPManager.Data;
 using RDPManager.Helpers;
 using RDPManager.Models;
+using RDPManager.Services;
 using RDPManager.Views;
 
 namespace RDPManager;
@@ -13,6 +14,7 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        DataContext = TranslationService.Instance;
 
         var dbPath = System.IO.Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
@@ -28,7 +30,7 @@ public partial class MainWindow : Window
         var items = _db.GetAll();
         LvConnections.ItemsSource = items;
         TbEmpty.Visibility = items.Count == 0 ? Visibility.Visible : Visibility.Collapsed;
-        TbStatus.Text = $"共 {items.Count} 个连接";
+        TbStatus.Text = TranslationService.Instance.StatusCount(items.Count);
     }
 
     private void BtnAdd_Click(object sender, RoutedEventArgs e)
@@ -69,8 +71,9 @@ public partial class MainWindow : Window
         if (LvConnections.SelectedItem is not RdpConnection selected) return;
 
         var result = MessageBox.Show(
-            $"确定要删除 {selected.ServerAddress} 的连接吗？",
-            "确认删除", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            TranslationService.Instance.DeleteConfirmMessage(selected.ServerAddress),
+            TranslationService.Instance.DeleteConfirmTitle,
+            MessageBoxButton.YesNo, MessageBoxImage.Question);
 
         if (result == MessageBoxResult.Yes)
         {
@@ -83,5 +86,11 @@ public partial class MainWindow : Window
     {
         if (LvConnections.SelectedItem is not RdpConnection selected) return;
         RdpLauncher.Launch(selected);
+    }
+
+    private void CbLanguage_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+    {
+        if (CbLanguage.SelectedItem is not System.Windows.Controls.ComboBoxItem item) return;
+        TranslationService.Instance.CurrentLanguage = item.Tag.ToString()!;
     }
 }
