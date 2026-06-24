@@ -51,6 +51,17 @@ public class TranslationService : INotifyPropertyChanged
     public string DeleteConfirmTitle => this["DeleteConfirmTitle"];
     public string LanguageLabel => this["LanguageLabel"];
 
+    public string Version
+    {
+        get
+        {
+            var ver = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version;
+            return ver != null ? $"v{ver.Major}.{ver.Minor}.{ver.Build}" : "v1.0.0";
+        }
+    }
+
+    public string AppTitleWithVersion => $"{AppTitle} {Version}";
+
     public string StatusCount(int count) => string.Format(this["StatusCount"], count);
     public string DeleteConfirmMessage(string server) => string.Format(this["DeleteConfirmMessage"], server);
 
