@@ -92,5 +92,6 @@ public partial class MainWindow : Window
     {
         if (CbLanguage.SelectedItem is not System.Windows.Controls.ComboBoxItem item) return;
         TranslationService.Instance.CurrentLanguage = item.Tag.ToString()!;
+        LoadData();
     }
 }
